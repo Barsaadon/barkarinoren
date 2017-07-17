@@ -1,0 +1,9 @@
+<div class="list-group">
+  <h3><b>Users List:</b></h3>
+  <ul class="custom-list">
+    <li *ngFor="let user of users">
+      <a href="/profile-user" class="list-group-item list-group-item-action">{{user.userName}}</a>
+    </li>
+  </ul>
+</div>
+

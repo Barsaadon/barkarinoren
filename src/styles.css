@@ -1,1 +1,145 @@
 /* You can add global styles to this file, and also import other style files */
+
+body{
+  background-color:#d6d6d6;
+  /*background-image: url("assets/images/background.png");*/
+  /*background-size: 100%;*/
+  /*background-repeat: no-repeat;*/
+}
+
+
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+.text-center{
+  text-align: center;
+}
+.container-all{
+  position: relative;
+  top: 100px;
+}
+.left-container{
+  background-color:lightblue;
+  text-align: center;
+  height: 100%;
+  /*border: 1px solid gray;*/
+}
+.right-container{
+  text-align: center;
+  height: 100%;
+  border: 1px solid gray;
+}
+.student-list{
+  border: 1px solid gray;
+}
+#box-area{
+  display: none;
+}
+.click-list{
+  cursor: pointer;
+}
+.text-details{
+  text-align: left;
+  margin-top: 25px;
+}
+.pic-user-style{
+  max-width: 100%;
+  margin-top: 15px;
+}
+.user-pic-area .pic-user-style{
+  max-width: 250px;
+}
+.btn-change-profilePic{
+  background: transparent;
+  border: none;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.btn-remove{
+  width: 100px;
+  height: 25px;
+  background-color: red;
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+  border: none;
+}
+.container-navbar{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background: #607d8b;
+  color: #bbc7cd;
+  border-bottom: 2px solid #455a64;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.container-navbar a{
+  color: #bbc7cd;
+}
+.logo{
+  width: 50px;
+  height: 35px;
+}
+.btn-onit{
+  width: 90px;
+  height: 30px;
+  background: green;
+  color: #ffffff;
+  border: none;
+  outline: none;
+}
+.btn-onwork{
+  width: 90px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid green;
+  color: green;
+  outline: none;
+}
+.btn-open-friend{
+  color:blue;
+}
+
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus{
+  z-index: 1;
+}
+
+.custom-list{
+  padding-left: 0;
+  list-style-type:none;
+}
+
+.cover-pic{
+  max-width: 100%;
+}
+
+.home-pic{
+  max-width: 100%;
+}
+
+.footer-section{
+  width: 100%;
+  background: #425660;
+  position: fixed;
+  bottom: 0;
+  border-top: 2px solid #607d8b;
+  padding: 5px;
+}
+
+.footer-section a{
+  color: #bbc7cd;
+}
+
+@media (max-width: 600px){
+  .btn-remove{
+    background-color: blue;
+  }
+}

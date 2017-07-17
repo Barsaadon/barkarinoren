@@ -1,0 +1,30 @@
+<div class="right-container">
+
+    <div class="course-list">
+        <h4><b>Task List for project: {{projectName}}</b></h4>
+        <ul>
+            <li class="click-list text-left" *ngFor="let course of courses"
+                (click)="ClickCourse(course)">{{course.name}}
+            </li>
+        </ul>
+    </div>
+
+    <div class="course-details" *ngIf="courseClicked">
+        <div class="col-md-12 text-left"><h3>Task Details</h3></div>
+        <div class="col-md-12">
+            <ul  class="text-details">
+                <li class="text-left" >Name: {{thisCourse.name}}</li>
+                <li class="text-left">ID: {{thisCourse.id}}</li>
+                   <!--<button class="OnIt"  style="color:red"><b> On It </b> </button>  &lt;!&ndash;btn is either red or green&ndash;&gt;-->
+            </ul>
+        </div>
+        <div class="on-it-area col-sm-12 text-left">
+            <button [ngClass]="{'btn-onit': cssOnitOn, 'btn-onwork': !cssOnitOn}" (click)="startStop()">{{onitStatus}}</button>
+        </div>
+
+        <div class="col-md-12 text-right">
+            <button class="btn-remove" (click)="onClick(deleteCourse)">Close</button>
+        </div>
+    </div>
+
+</div>

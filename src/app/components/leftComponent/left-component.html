@@ -1,0 +1,84 @@
+
+
+<div class="left-container">
+
+    <!--<div class="col-sm-3 name-list">-->
+        <!--<h4>Name List</h4>-->
+    <!--</div>-->
+    <div class="col-sm-12 data-insert">
+        <div class="student-list">
+            <h4><b>project List:</b></h4>
+            <ul id="list">
+                <li class="click-list text-left" *ngFor="let stud of students"
+                    (click)="ClickStudent(stud)"
+                    id="{{stud.id}}">{{stud.Pname}}
+                </li>
+            </ul>
+        </div>
+        <!--<student-profile></student-profile>-->
+        <div class="student-profile" *ngIf="studentClicked">
+            <div class="col-md-12 text-left"><h3>Project Info</h3></div>
+            <div class="col-md-3">
+                <pic-user></pic-user>
+            </div>
+
+            <div class="col-md-9">
+                <ul class="text-details">
+                    <li>Name: {{thisStudent.Pname}}</li>
+                    <li>ID: {{thisStudent.projectNum}}</li>
+                    <li>Days_Left: {{thisStudent.days_to_finish}}</li>
+
+                    <!-- <div class="container"> -->
+                    <!--<button class="btn-open-friend" (click)="openFriends()" >Friends List</button>-->
+
+                  <button class="btn btn-info" data-toggle="modal" data-target="#basicExample">Works on this project</button>
+                    <!-- <div id="list1" class="collapse">
+                         scscscsdcsdcsd
+                     </div></div>-->
+
+                </ul>
+            </div>
+
+            <div class="col-md-12 text-right" *ngIf="studentClicked">
+                <button class="btn-remove" (click)="ClickDeleteStudent()">Close</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="basicExample" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <div>
+          <ul class="custom-list">
+            <li *ngFor="let user of users">
+              <a href="/profile-user" class="list-group-item list-group-item-action">{{user.userName}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Modal -->
+
