@@ -17,6 +17,8 @@ import {$} from "protractor";
 })
 
 export class LeftComponent {
+
+    //projects
     name: string;
 
     // Pname : string;
@@ -29,13 +31,13 @@ export class LeftComponent {
             "Pname": "Design",
             "projectNum": 111,
             "days_to_finish": 25,
-            "department_city": "Netanya",
+            "department_city": "Netanya"
         },
         {
             "Pname": "Build",
             "projectNum": 222,
-            "days_to_finish": 12,
-            "department_city": "Netanya",
+            "days_to_finish":  12,
+            "department_city": "Netanya"
         },
         {
             "Pname": "Code",
@@ -64,7 +66,9 @@ export class LeftComponent {
     thisStudent  = this.students[0];
     // @Output() studentClicked = new EventEmitter();
     public studentClicked = false;
-    constructor() {
+
+
+  constructor() {
         // this.name = 'Bar Saadon';
     }
 

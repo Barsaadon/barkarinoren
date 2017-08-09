@@ -12,6 +12,8 @@ import {Component} from '@angular/core';
 
 export class usersList {
 
+  _userName: string;
+
   users = [
     {'userName' : 'Bar Saadon'},
     {'userName' : 'Karin Sharoni'},
@@ -22,7 +24,7 @@ export class usersList {
   ];
 
   constructor() {
-
+    this._userName = "Bar Saadon";
   }
 
 }

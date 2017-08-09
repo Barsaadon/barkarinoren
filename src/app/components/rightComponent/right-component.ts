@@ -2,6 +2,7 @@
  * Created by Bar Saadon on 23/01/2017.
  */
 import {Component} from '@angular/core';
+import {LeftComponent} from '../leftComponent/left-component';
 
 @Component({
     selector: 'right-component',

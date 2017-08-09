@@ -6,5 +6,4 @@ export interface IStudent {
     projectNum: number;
     days_to_finish: number;
     department_city: string;
-    
 }

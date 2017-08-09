@@ -143,3 +143,15 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     background-color: blue;
   }
 }
+
+.right-side{
+  width: 100%;
+  height: 250px;
+  background: red;
+}
+
+.btn-openUser{
+  width: 200px;
+  height: 30px;
+  margin-bottom: 5px;
+}

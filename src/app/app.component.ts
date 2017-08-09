@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import {Login} from './components/login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title : string;
+  // logOn: boolean;
+
+  @Input()logOn: boolean;
 
   constructor(){
     this.title = "My App";
+    // this.logOn = false;
   }
 }
