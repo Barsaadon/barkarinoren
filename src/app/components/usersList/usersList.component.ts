@@ -15,12 +15,30 @@ export class usersList {
   _userName: string;
 
   users = [
-    {'userName' : 'Bar Saadon'},
-    {'userName' : 'Karin Sharoni'},
-    {'userName' : 'Oren Yalo'},
-    {'userName' : 'Bar SA'},
-    {'userName' : 'Karin SA'},
-    {'userName' : 'Oren SA'},
+    {
+      'userName' : 'Bar Saadon',
+      'role' : 'Administrator'
+    },
+    {
+      'userName' : 'Karin Sharoni',
+      'role' : 'Administrator'
+    },
+    {
+      'userName' : 'Oren Yalo',
+      'role' : 'Administrator'
+    },
+    {
+      'userName' : 'Bar SA',
+      'role' : 'Subscriber'
+    },
+    {
+      'userName' : 'Karin SA',
+      'role' : 'Subscriber'
+    },
+    {
+      'userName' : 'Oren SA',
+      'role' : 'Subscriber'
+    },
   ];
 
   constructor() {

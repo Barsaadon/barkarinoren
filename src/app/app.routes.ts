@@ -7,24 +7,34 @@ import { Routes, RouterModule } from '@angular/router';
 
 // import { LeftComponent } from './components/leftComponent/left-component';
 // import { RightComponent } from './components/rightComponent/right-component';
-import { Home } from './components/home/home.component';
+// import { Home } from './components/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { InsertUser } from './components/insertUser/insertUser.component';
 import { InsertProject } from './components/InsertProject/InsertProject.component';
 import { projectList } from './components/projectList/projectList.component';
 import { usersList } from './components/usersList/usersList.component';
-import { Login } from './components/login/login.component';
+// import { Login } from './components/login/login.component';
 import { workingDay } from './components/workingDay/workingDay.component';
 import {ProfileUser} from "./components/profileUser/profileUser.component";
 
+// import { HomeComponent } from './components/home/index';
+import { LoginComponent } from './components/login/index';
+import { RegisterComponent } from './components/register/index';
+import { AuthGuard } from './_guards/index';
+
 
 export const routes: Routes = [
+    // { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: Home },
+    // { path: 'home', component: Home},
+    { path: 'home', component: HomeComponent , canActivate: [AuthGuard]},
     { path: 'insert-user', component: InsertUser },
     { path: 'insert-project', component: InsertProject },
     { path: 'project-list', component: projectList },
     { path: 'users-list', component: usersList },
-    { path: 'login', component: Login },
+    // { path: 'login', component: Login },
     { path: 'working-day', component: workingDay },
     { path: 'profile-user', component: ProfileUser }
 ];

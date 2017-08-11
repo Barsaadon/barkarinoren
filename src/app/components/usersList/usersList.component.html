@@ -4,7 +4,8 @@
     <li *ngFor="let user of users">
       <!--<a href="/profile-user" class="list-group-item list-group-item-action">{{user.userName}}</a>-->
       <!--<a data-target="#userModal" class="list-group-item list-group-item-action">{{user.userName}}</a>-->
-      <button class="btn-openUser" data-toggle="modal" data-target="#userModal">{{user.userName}}</button>
+      <button class="btn-openUser" data-toggle="modal" data-target="#userModal">
+        {{user.userName}} <b>Role:</b> {{user.role}}</button>
     </li>
   </ul>
 </div>

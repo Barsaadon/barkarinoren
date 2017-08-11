@@ -2,7 +2,7 @@
  * Created by Bar Saadon on 23/01/2017.
  */
 import {Component, Output, EventEmitter} from '@angular/core';
-import { IStudent } from '../../components/leftComponent/student';
+import { IProject } from './project';
 import {$} from "protractor";
 
 // import classElement = ts.ScriptElementKind.classElement;
@@ -26,7 +26,7 @@ export class LeftComponent {
     // days_to_finish: number;
     // department_city: string;
 
-    students: IStudent[] = [
+    students: IProject[] = [
         {
             "Pname": "Design",
             "projectNum": 111,
