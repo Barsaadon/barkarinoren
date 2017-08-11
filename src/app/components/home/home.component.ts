@@ -47,6 +47,10 @@ export class HomeComponent implements OnInit {
     this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
   }
 
+  logoutSystem=() =>{
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
+
   private loadAllUsers() {
     this.userService.getAll().subscribe(users => { this.users = users; });
   }

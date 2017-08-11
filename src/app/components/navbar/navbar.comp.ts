@@ -2,6 +2,9 @@
  * Created by Bar Saadon on 21/05/2017.
  */
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { User } from '../../_models/index';
+import { UserService } from '../../_services/index';
+// import { HomeComponent } from '../home/home.component'
 
 
 @Component({
@@ -11,9 +14,19 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 })
 
 export class navBar implements OnInit {
-    constructor() {
+
+    currentUser: User;
+    users: User[] = [];
+
+    constructor(private userService: UserService) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
-    ngOnInit() { }
+    logoutSystem=() =>{
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    }
+
+    ngOnInit() {
+    }
 
 }

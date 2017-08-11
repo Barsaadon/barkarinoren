@@ -32,5 +32,5 @@
       - <a (click)="deleteUser(user.id)">Delete</a>
     </li>
   </ul>
-  <p><a [routerLink]="['/login']">Logout</a></p>
+  <p><a (click)="logoutSystem()" [routerLink]="['/login']">Logout</a></p>
 </div>
