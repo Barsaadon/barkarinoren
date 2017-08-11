@@ -10,6 +10,7 @@ export let fakeBackendProvider = {
   useFactory: (backend: MockBackend, options: BaseRequestOptions) => {
     // array in local storage for registered users
     let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
+    let projects: any[] = JSON.parse(localStorage.getItem('projects')) || [];
 
     // configure fake backend
     backend.connections.subscribe((connection: MockConnection) => {
@@ -118,6 +119,83 @@ export let fakeBackendProvider = {
             connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
           }
         }
+
+
+        // get projects
+        if (connection.request.url.endsWith('/api/projects') && connection.request.method === RequestMethod.Get) {
+          // check for fake auth token in header and return projects if valid, this security is implemented server side in a real application
+          if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+            connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: projects })));
+          } else {
+            // return 401 not authorised if token is null or invalid
+            connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
+          }
+        }
+
+        // get project by id
+        if (connection.request.url.match(/\/api\/projects\/\d+$/) && connection.request.method === RequestMethod.Get) {
+          // check for fake auth token in header and return project if valid, this security is implemented server side in a real application
+          if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+            // find project by id in projects array
+            let urlParts = connection.request.url.split('/');
+            let id = parseInt(urlParts[urlParts.length - 1]);
+            let matchedProjects = projects.filter(project => { return project.id === id; });
+            let project = matchedProjects.length ? matchedProjects[0] : null;
+
+            // respond 200 OK with project
+            connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: project })));
+          } else {
+            // return 401 not authorised if token is null or invalid
+            connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
+          }
+        }
+
+        // create project
+        if (connection.request.url.endsWith('/api/projects') && connection.request.method === RequestMethod.Post) {
+          // get new project object from post body
+          let newProject = JSON.parse(connection.request.getBody());
+
+          // validation
+          let duplicateProject = projects.filter(projects => { return projects.projectName === newProject.projectName; }).length;
+          if (duplicateProject) {
+            return connection.mockError(new Error('Projectname "' + newProject.projectName + '" is already taken'));
+          }
+
+          // save new project
+          newProject.id = projects.length + 1;
+          projects.push(newProject);
+          localStorage.setItem('projects', JSON.stringify(projects));
+
+          // respond 200 OK
+          connection.mockRespond(new Response(new ResponseOptions({ status: 200 })));
+        }
+
+        // delete project
+        if (connection.request.url.match(/\/api\/projects\/\d+$/) && connection.request.method === RequestMethod.Delete) {
+          // check for fake auth token in header and return project if valid, this security is implemented server side in a real application
+          if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+            // find project by id in projects array
+            let urlParts = connection.request.url.split('/');
+            let id = parseInt(urlParts[urlParts.length - 1]);
+            for (let i = 0; i < projects.length; i++) {
+              let project = projects[i];
+              if (project.id === id) {
+                // delete project
+                projects.splice(i, 1);
+                localStorage.setItem('projects', JSON.stringify(projects));
+                break;
+              }
+            }
+
+            // respond 200 OK
+            connection.mockRespond(new Response(new ResponseOptions({ status: 200 })));
+          } else {
+            // return 401 not authorised if token is null or invalid
+            connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
+          }
+        }
+
+
 
       }, 500);
 

@@ -69,11 +69,12 @@
       <!--Body-->
       <div class="modal-body">
         <div>
-          <ul class="custom-list">
-            <li *ngFor="let user of users">
-              <a href="/profile-user" class="list-group-item list-group-item-action">{{user.userName}}</a>
-            </li>
-          </ul>
+          <!--<ul class="custom-list">-->
+            <!--<li *ngFor="let user of users">-->
+              <!--<a href="/profile-user" class="list-group-item list-group-item-action">{{user.userName}}</a>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <users-list></users-list>
         </div>
       </div>
       <!--Footer-->

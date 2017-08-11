@@ -5,33 +5,35 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AlertService, UserService } from '../../_services/index';
+import {ProjectService} from "../../_services/project.service";
 
 @Component({
-  selector: 'register-comp',
+  selector: 'addproject-comp',
   moduleId: module.id,
-  templateUrl: 'register.component.html'
+  templateUrl: 'addproject.component.html'
 })
 
-export class RegisterComponent {
+export class AddProjectComponent {
   model: any = {};
   loading = false;
 
   constructor(
     private router: Router,
-    private userService: UserService,
+    private projectService: ProjectService,
     private alertService: AlertService) { }
 
-  register() {
+  registerProject() {
     this.loading = true;
-    this.userService.create(this.model)
+    this.projectService.create(this.model)
       .subscribe(
         data => {
           this.alertService.success('Registration successful', true);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/project-list']);
         },
         error => {
           this.alertService.error(error);
           this.loading = false;
+          alert("ERROR");
         });
   }
 }

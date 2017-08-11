@@ -1,29 +1,56 @@
-<h2>Insert Project</h2>
-<div class="col-md-6">
-  <form>
-    <div class="form-group">
-      <label for="projectName">Project name</label>
-      <input type="text" class="form-control" id="projectName" placeholder="Enter Project Name">
-    </div>
-    <div class="form-group">
-      <label for="projectTime">Project Time</label>
-      <input type="number" class="form-control" id="projectTime" aria-describedby="emailHelp" placeholder="Enter Hours">
-      <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-    </div>
-    <div class="form-group">
-      <label>Tasks</label>
-      <textarea class="form-control"></textarea>
-    </div>
-    <div class="form-group">
-      <label>Assign Users</label>
-      <select class="form-control" id="assignUsers" multiple>
-        <option>User 1</option>
-        <option>User 2</option>
-        <option>User 3</option>
-        <option>User 4</option>
-      </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+<!--<h2>Insert Project</h2>-->
+<!--<div class="col-md-6">-->
+  <!--<form>-->
+    <!--<div class="form-group">-->
+      <!--<label for="projectName">Project name</label>-->
+      <!--<input type="text" class="form-control" id="projectName" placeholder="Enter Project Name">-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<label for="projectTime">Project Time</label>-->
+      <!--<input type="number" class="form-control" id="projectTime" aria-describedby="emailHelp" placeholder="Enter Hours">-->
+      <!--&lt;!&ndash;<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>&ndash;&gt;-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<label>Tasks</label>-->
+      <!--<textarea class="form-control"></textarea>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<label>Assign Users</label>-->
+      <!--<select class="form-control" id="assignUsers" multiple>-->
+        <!--<option>User 1</option>-->
+        <!--<option>User 2</option>-->
+        <!--<option>User 3</option>-->
+        <!--<option>User 4</option>-->
+      <!--</select>-->
+    <!--</div>-->
+    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+  <!--</form>-->
+<!--</div>-->
 
+<!--NEW-->
+
+<!--<div class="col-md-6 col-md-offset-3">-->
+  <!--<h2>Add Project</h2>-->
+
+  <!--<form name="form" (ngSubmit)="p.form.valid && addProject()" #p="ngForm" novalidate>-->
+    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !projectName.valid }">-->
+      <!--<label for="projectName">Project Name</label>-->
+      <!--<input type="text" class="form-control" name="projectName" [(ngModel)]="model.projectName" #projectName="ngModel" required />-->
+      <!--<div *ngIf="f.submitted && !projectTime.valid" class="help-block">Project Name is required</div>-->
+    <!--</div>-->
+    <!---->
+    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !projectTime.valid }">-->
+      <!--<label for="projectTime">Project Time</label>-->
+      <!--<input type="text" class="form-control" name="projectTime" [(ngModel)]="model.projectTime" #projectTime="ngModel" required />-->
+      <!--<div *ngIf="f.submitted && !projectTime.valid" class="help-block">Last Name is required</div>-->
+    <!--</div>-->
+    <!---->
+    <!--<div class="form-group">-->
+      <!--<button [disabled]="loading" (click)="addProject()" class="btn btn-primary">Add</button>-->
+      <!--<img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />-->
+      <!--<a [routerLink]="['/project-list']" class="btn btn-link">Cancel</a>-->
+    <!--</div>-->
+  <!--</form>-->
+<!--</div>-->
+
+<addproject-comp></addproject-comp>

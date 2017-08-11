@@ -29,10 +29,11 @@ import { ProfileUser } from './components/profileUser/profileUser.component';
 
 import { AlertComponent } from './_directive/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, ProjectService } from './_services/index';
 import { HomeComponent } from './components/home/index';
 import { LoginComponent } from './components/login/index';
 import { RegisterComponent } from './components/register/index';
+import { AddProjectComponent } from './components/addProject/index';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { RegisterComponent } from './components/register/index';
     ProfileUser,
     AlertComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,7 @@ import { RegisterComponent } from './components/register/index';
     AlertService,
     AuthenticationService,
     UserService,
+    ProjectService,
 
     // providers used to create fake backend
     fakeBackendProvider,

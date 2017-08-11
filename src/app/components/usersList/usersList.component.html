@@ -4,8 +4,26 @@
     <li *ngFor="let user of users">
       <!--<a href="/profile-user" class="list-group-item list-group-item-action">{{user.userName}}</a>-->
       <!--<a data-target="#userModal" class="list-group-item list-group-item-action">{{user.userName}}</a>-->
-      <button class="btn-openUser" data-toggle="modal" data-target="#userModal">
-        {{user.userName}} <b>Role:</b> {{user.role}}</button>
+
+
+      <!--<button class="btn-openUser" data-toggle="modal" data-target="#userModal">-->
+        <!--{{user.username}} ({{user.firstName}} {{user.lastName}})-->
+        <!-- - <a (click)="deleteUser(user.id)">Delete</a></button>-->
+
+      <button class="btn-openUser" data-toggle="collapse" [attr.data-target]="'#' + 'userCollapse' + user.id">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a (click)="deleteUser(user.id)">Delete</a></button>
+
+      <div id="userCollapse{{user.id}}" class="collapse">
+        Name: {{user.firstName}} {{user.lastName}}
+        <br>
+        <br>
+        Email: {{user.email}}
+        <br>
+        <br>
+        Phone: {{user.phoneNum}}
+      </div>
+
     </li>
   </ul>
 </div>
