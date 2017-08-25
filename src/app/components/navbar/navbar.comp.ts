@@ -16,6 +16,7 @@ import { UserService } from '../../_services/index';
 export class navBar implements OnInit {
 
     currentUser: User;
+    isAdmin: boolean;
     users: User[] = [];
 
     constructor(private userService: UserService) {

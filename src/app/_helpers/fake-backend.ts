@@ -14,6 +14,7 @@ export let fakeBackendProvider = {
 
     // configure fake backend
     backend.connections.subscribe((connection: MockConnection) => {
+      console.log('connection.request.url: ', connection.request.url);
       // wrap in timeout to simulate server api call
       setTimeout(() => {
 
@@ -37,6 +38,7 @@ export let fakeBackendProvider = {
                 username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,
+                isAdmin: user.isAdmin,
                 token: 'fake-jwt-token'
               }
             })));
@@ -119,24 +121,51 @@ export let fakeBackendProvider = {
             connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
           }
         }
+        //
+        // console.log('connection.request.url: ', connection.request.url);
+        //   // get parameters from post request
+        //   let params = JSON.parse(connection.request.getBody());
+        //
+        //   // find if any user matches login credentials
+        //   let filteredProjects = projects.filter(project => {
+        //     return project.projectName === params.projectName;
+        //   });
+        //
+        //   let project = filteredProjects[0];
+        //   connection.mockRespond(new Response(new ResponseOptions({
+        //     status: 200,
+        //     body: {
+        //       id: project.id,
+        //       projectsname: project.projectName,
+        //       // firstName: user.firstName,
+        //       // lastName: user.lastName,
+        //       token: 'fake-jwt-token-project'
+        //     }
+        //   })));
+
 
 
         // get projects
+        console.log('connection.request.url: ', connection.request.url);
         if (connection.request.url.endsWith('/api/projects') && connection.request.method === RequestMethod.Get) {
+          // console.log('here');
           // check for fake auth token in header and return projects if valid, this security is implemented server side in a real application
-          if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+          // if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token-project') {
+          //   console.log('there');
             connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: projects })));
-          } else {
-            // return 401 not authorised if token is null or invalid
-            connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
-          }
+          // } else {
+          //   console.log('foooooo');
+          //   // return 401 not authorised if token is null or invalid
+          //   connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
+          // }
         }
 
         // get project by id
         if (connection.request.url.match(/\/api\/projects\/\d+$/) && connection.request.method === RequestMethod.Get) {
           // check for fake auth token in header and return project if valid, this security is implemented server side in a real application
-          if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+          if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token-project') {
             // find project by id in projects array
+            console.log("get peoject by id IFFFF");
             let urlParts = connection.request.url.split('/');
             let id = parseInt(urlParts[urlParts.length - 1]);
             let matchedProjects = projects.filter(project => { return project.id === id; });
@@ -145,6 +174,7 @@ export let fakeBackendProvider = {
             // respond 200 OK with project
             connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: project })));
           } else {
+            console.log("get peoject by id ELSEEEEE");
             // return 401 not authorised if token is null or invalid
             connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
           }
@@ -158,7 +188,7 @@ export let fakeBackendProvider = {
           // validation
           let duplicateProject = projects.filter(projects => { return projects.projectName === newProject.projectName; }).length;
           if (duplicateProject) {
-            return connection.mockError(new Error('Projectname "' + newProject.projectName + '" is already taken'));
+            return connection.mockError(new Error('ProjectName "' + newProject.projectName + '" is already taken'));
           }
 
           // save new project
@@ -173,11 +203,14 @@ export let fakeBackendProvider = {
         // delete project
         if (connection.request.url.match(/\/api\/projects\/\d+$/) && connection.request.method === RequestMethod.Delete) {
           // check for fake auth token in header and return project if valid, this security is implemented server side in a real application
-          if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+          console.log("project delete");
+          // if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token-project') {
             // find project by id in projects array
+            console.log("project delete IFFF");
             let urlParts = connection.request.url.split('/');
             let id = parseInt(urlParts[urlParts.length - 1]);
             for (let i = 0; i < projects.length; i++) {
+              console.log("project delete FORRRR");
               let project = projects[i];
               if (project.id === id) {
                 // delete project
@@ -189,10 +222,11 @@ export let fakeBackendProvider = {
 
             // respond 200 OK
             connection.mockRespond(new Response(new ResponseOptions({ status: 200 })));
-          } else {
+          // } else {
+            console.log("project delete ELSEEEE");
             // return 401 not authorised if token is null or invalid
             connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
-          }
+          // }
         }
 
 

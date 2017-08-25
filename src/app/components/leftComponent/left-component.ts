@@ -2,56 +2,21 @@
  * Created by Bar Saadon on 23/01/2017.
  */
 import {Component, Output, EventEmitter} from '@angular/core';
-import { IProject } from './project';
-import {$} from "protractor";
+import { Project } from '../../_models/index';
+import {ProjectService} from "../../_services/project.service";
 
-// import classElement = ts.ScriptElementKind.classElement;
-// import removeItemFromSet = ts.server.removeItemFromSet;
-// import {StudentProfile} from  '../studentProfileComp/student-profile-comp';
 
 @Component({
     selector: 'left-component',
     templateUrl:`app/components/leftComponent/left-component.html`,
     styleUrls:[`../../app.component.css`]
-    // directives: [StudentProfile]
 })
 
 export class LeftComponent {
 
     //projects
-    name: string;
-
-    // Pname : string;
-    // projectNum: number;
-    // days_to_finish: number;
-    // department_city: string;
-
-    students: IProject[] = [
-        {
-            "Pname": "Design",
-            "projectNum": 111,
-            "days_to_finish": 25,
-            "department_city": "Netanya"
-        },
-        {
-            "Pname": "Build",
-            "projectNum": 222,
-            "days_to_finish":  12,
-            "department_city": "Netanya"
-        },
-        {
-            "Pname": "Code",
-            "projectNum": 333,
-            "days_to_finish": 22,
-            "department_city": "Raanana"
-        },
-        {
-            "Pname": "Engineering",
-            "projectNum": 444,
-            "days_to_finish": 30,
-            "department_city": "Haifa"
-        }
-    ];
+  name: string;
+  projects: Project[] = [];
 
   users = [
     {'userName' : 'Bar Saadon'},
@@ -62,37 +27,39 @@ export class LeftComponent {
     {'userName' : 'Oren SA'},
   ];
 
-
-    thisStudent  = this.students[0];
-    // @Output() studentClicked = new EventEmitter();
-    public studentClicked = false;
-
-
-  constructor() {
-        // this.name = 'Bar Saadon';
-    }
-
-    // public studentClicked = false;
+   // @Output() studentClicked = new EventEmitter();
+    thisProject  = this.projects[0];
+    public projectClicked = false;
 
 
-    ClickStudent(std:any){
-        console.debug('CLICKED!!');
-        this.thisStudent=std;
-        this.studentClicked = !this.studentClicked;
-    }
+  constructor(private projectService: ProjectService) {}
 
-    // openFriends(std:any){
-    //    alert("Friends List: Karin 0541111111, Bar 0542222222, Oren 0543333333");
-    //    prompt("type question for friend");  //question may be sent to contact selected from list above.
-    // }
+  clickOnProject(std:any){
+        console.log('CLICKED!!');
+        this.thisProject=std;
+        // this.projectClicked = !this.projectClicked;
+      this.projectClicked = true;
+  }
 
 
     ClickDeleteStudent(){
-        this.studentClicked = false;
+        this.projectClicked = false;
         // this.students[];
 
         console.debug('DELETE!!');
     }
+
+  ngOnInit() {
+    this.loadAllProjects();
+  }
+
+  deleteProject(id: number) {
+    this.projectService.delete(id).subscribe(() => { this.loadAllProjects() });
+  }
+
+  private loadAllProjects() {
+    this.projectService.getAll().subscribe(projects => { this.projects = projects; });
+  }
 
 }
 

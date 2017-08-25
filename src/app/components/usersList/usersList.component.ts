@@ -15,40 +15,6 @@ import { UserService } from '../../_services/index';
 
 export class usersList {
 
-  // _userName: string;
-  //
-  // users = [
-  //   {
-  //     'userName' : 'Bar Saadon',
-  //     'role' : 'Administrator'
-  //   },
-  //   {
-  //     'userName' : 'Karin Sharoni',
-  //     'role' : 'Administrator'
-  //   },
-  //   {
-  //     'userName' : 'Oren Yalo',
-  //     'role' : 'Administrator'
-  //   },
-  //   {
-  //     'userName' : 'Bar SA',
-  //     'role' : 'Subscriber'
-  //   },
-  //   {
-  //     'userName' : 'Karin SA',
-  //     'role' : 'Subscriber'
-  //   },
-  //   {
-  //     'userName' : 'Oren SA',
-  //     'role' : 'Subscriber'
-  //   },
-  // ];
-  //
-  // constructor() {
-  //   this._userName = "Bar Saadon";
-  // }
-
-
   // NEW
   currentUser: User;
   users: User[] = [];

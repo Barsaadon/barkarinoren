@@ -10,14 +10,12 @@
       <div class="student-list">
         <h4><b>project List:</b></h4>
         <ul id="list">
-          <li class="click-list text-left" *ngFor="let stud of students"
-              (click)="ClickStudent(stud)"
-              id="{{stud.id}}">{{stud.Pname}}
+          <li class="click-list text-left" *ngFor="let project of projects"
+              (click)="clickOnProject(project)" id="{{project.id}}">{{project.projectName}}
           </li>
         </ul>
       </div>
-      <!--<student-profile></student-profile>-->
-      <div class="student-profile" *ngIf="studentClicked">
+      <div class="student-profile" *ngIf="projectClicked">
         <div class="col-md-12 text-left"><h3>Project Info</h3></div>
         <div class="col-md-3">
           <pic-user></pic-user>
@@ -25,22 +23,17 @@
 
         <div class="col-md-9">
           <ul class="text-details">
-            <li>Name: {{thisStudent.Pname}}</li>
-            <li>ID: {{thisStudent.projectNum}}</li>
-            <li>Days_Left: {{thisStudent.days_to_finish}}</li>
-
-            <!-- <div class="container"> -->
-            <!--<button class="btn-open-friend" (click)="openFriends()" >Friends List</button>-->
+            <li>Name: {{thisProject.projectName}}</li>
+            <li>ID: {{thisProject.id}}</li>
+            <li>Project Time: {{thisProject.projectTime}}</li>
+            <li>{{thisProject.assignedUsers}}</li>
 
             <button class="btn btn-info" data-toggle="modal" data-target="#basicExample">Works on this project</button>
-            <!-- <div id="list1" class="collapse">
-                 scscscsdcsdcsd
-             </div></div>-->
 
           </ul>
         </div>
 
-        <div class="col-md-12 text-right" *ngIf="studentClicked">
+        <div class="col-md-12 text-right" *ngIf="projectClicked">
           <button class="btn-remove" (click)="ClickDeleteStudent()">Close</button>
         </div>
       </div>
@@ -49,7 +42,7 @@
   </div>
 </div>
 
-<div class="col-sm-6" *ngIf="studentClicked">
+<div class="col-sm-6" *ngIf="projectClicked">
   <right-component></right-component>
 </div>
 

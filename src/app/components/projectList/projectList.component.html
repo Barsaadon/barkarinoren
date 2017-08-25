@@ -2,15 +2,31 @@
   <h3><b>Projects List:</b></h3>
   <ul class="custom-list">
     <li *ngFor="let project of projects">
-      <!--<a href="#" class="list-group-item list-group-item-action">{{project.ProjectName}}</a>-->
-      <button class="list-group-item list-group-item-action" data-toggle="modal" data-target="#projectModal">{{project.projectName}}</button>
+      <button id="{{project.id}}"
+              data-toggle="collapse"
+              [attr.data-target]="'#' + 'userCollapse' + project.id"
+              class="list-group-item list-group-item-action">{{project.projectName}}
+        <a data-toggle="modal" [attr.data-target]="'#' + 'deleteProjectModal' + project.id">Delete</a>
+      </button>
+
+      <div id="userCollapse{{project.id}}" class="collapse">
+        Name: {{project.projectName}}
+        <br>
+        <br>
+        Time: {{project.projectTime}}
+        <br>
+        <br>
+        Assigned Users: {{project.assignedUsers}}
+      </div>
+      <br>
+      <!--<button class="list-group-item list-group-item-action" data-toggle="modal" data-target="#projectModal">{{project.projectName}}</button>-->
     </li>
   </ul>
 </div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div *ngFor="let project of projects" class="modal fade" id="deleteProjectModal{{project.id}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <!--Content-->
     <div class="modal-content">
@@ -19,18 +35,18 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title w-100" id="myModalLabel">Project Details</h4>
+        <h4 class="modal-title w-100" id="myModalLabel">Are You Sure?</h4>
       </div>
       <!--Body-->
       <div class="modal-body">
         <div>
-          <p>{{_projectName}}</p>
+          You Really want to delete this project?
         </div>
       </div>
       <!--Footer-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" (click)="deleteProject(project.id)" class="btn btn-primary" data-dismiss="modal">Yes, I'm sure!</button>
       </div>
     </div>
     <!--/.Content-->

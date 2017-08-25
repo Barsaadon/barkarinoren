@@ -14,18 +14,6 @@ import {ProjectService} from "../../_services/project.service";
 
 export class projectList {
 
-  // projects = [
-  //   {'ProjectName': 'Angular Project'},
-  //   {'ProjectName': 'c# Project'},
-  //   {'ProjectName': 'Data Mining Project'},
-  //   {'ProjectName': 'Cyber Security Project'},
-  //   {'ProjectName': 'Management Analytic Project'},
-  //   {'ProjectName': 'Cyber Shield'}
-  // ];
-  //
-  // constructor() {
-  //
-  // }
 
   // NEW
   currentProject: Project;

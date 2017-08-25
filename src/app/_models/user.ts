@@ -9,4 +9,5 @@ export class User {
   lastName: string;
   email: string;
   phoneNum: string;
+  isAdmin: boolean;
 }
